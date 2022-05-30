@@ -5,14 +5,14 @@ let styles = {
         zIndex: "1000",
         position: "fixed",
 
-        top: "2vh",
+        top: "5vh",
 
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
 
         width: "100vw",
-        height: "12vh",
+        height: "12vmin",
 
         backgroundColor: colors.primary,
 
@@ -21,7 +21,7 @@ let styles = {
     text: {
         margin: "0",
         fontFamily: "DiscoFont",
-        fontSize: "17vmin",
+        fontSize: "20vmin",
         color: colors.secondary,
         filter: `drop-shadow(0px 0px 3px ${colors.dark})`
     },
@@ -50,7 +50,7 @@ function Navbar() {
   return (
     <div style={styles.navbar} className="navbar">
         <p style={styles.text}>
-          DISCO FRISKO
+          DISCO MELO
         </p>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
@@ -6,6 +6,9 @@ import colors from './colors.js'
 
 import Navbar from './Navbar'
 import StartPage from './StartPage'
+
+import Betalning from './betalning/Betalning'
+
 
 let styles = {
   main: {
@@ -24,14 +27,27 @@ let styles = {
   },
 }
 
+function Index() {
+  const [payment, startPayment] = useState(false);
+
+  if(payment) {
+    return (
+      <div style={styles.main}>
+        <Navbar/>
+        <Betalning/>
+      </div>
+    )    
+  } else {
+    return (
+      <div style={styles.main}>
+        <Navbar/>
+        <StartPage viewChange={startPayment}/>
+      </div>
+    )
+  }  
+} 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <div style={styles.main}>
-      <Navbar/>
-      <StartPage/>
-    </div>
-  </React.StrictMode>
-);
+root.render(<Index></Index>);
 
 

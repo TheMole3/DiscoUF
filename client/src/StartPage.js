@@ -15,7 +15,7 @@ import Discokort from './tabs/discokort'
 
 let styles = {
     content: {
-        marginTop: "3vh",
+        marginTop: "2vh",
 
         display: "flex",
         flexDirection: "column",
@@ -56,7 +56,7 @@ let styles = {
     }
 }
 
-function StartPage() {
+function StartPage(props) {
   return (
     <div style={styles.content}>
         <p style={styles.question}>Vad är DISCO FRISKO?</p>
@@ -78,7 +78,7 @@ function StartPage() {
                 "Discokort": <Discokort/>,
                 "Vad har vi förbättrat?": <Forbattringar/>,
                 "Föräldrar": <Foraldrar/>,
-                "Betalning": <Betalning/>,
+                "Betalning": <Betalning viewChange={props.viewChange}/>,
                 "Vilka är vi?": <Omoss/>,
                 "Kontakt": <Kontakt/>
             }
