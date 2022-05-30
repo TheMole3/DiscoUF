@@ -10,8 +10,6 @@ function Children(props) {
         let field = event.target.name.split("-");
         let newChildren = children;
 
-        console.log(field[0])
-
         switch(field[0]) {
             case "firstname": 
                 newChildren[field[1]].firstName = event.target.value;

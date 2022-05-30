@@ -28,13 +28,13 @@ let styles = {
 }
 
 function Index() {
-  const [payment, startPayment] = useState(false);
+  const [payment, startPayment] = useState(true);
 
   if(payment) {
     return (
       <div style={styles.main}>
         <Navbar/>
-        <Betalning/>
+        <Betalning viewChange={startPayment}/>
       </div>
     )    
   } else {

@@ -25,6 +25,7 @@ export default {
 
         fontSize: "6vmin",
         fontWeight: 1000,
+        fontFamily: "Arial",
         
         borderRadius: "50%",
         border: "none",
@@ -66,6 +67,7 @@ export default {
         fontWeight: 100,
         fontSize: "4.5vmin",
         letterSpacing: "0.1vmin",
+        textAlign: "center",
     },
     childRow: {
         width: "100%",
@@ -79,6 +81,15 @@ export default {
     },
     childTextInput: {
         width: "32vw",
+
+        fontSize: "5vmin",
+        textAlign: "center",
+
+        border: "none",
+        borderBottom: `1px solid ${colors.secondary}`
+    },
+    longTextInput: {
+        width: "55vw",
 
         fontSize: "5vmin",
         textAlign: "center",
@@ -108,6 +119,32 @@ export default {
         width: "50vw",
         height: "8vh",
 
-        marginTop: "10vw"
+        marginTop: "10vw",
+        borderRadius: "10px",
+    },
+    backButton: {
+        zIndex: 1000,
+        top: "2vh",
+        left: "3vw",
+
+        position: "absolute",
+
+        opacity: "80%",
+
+        lineHeight: "1vw",
+
+        width: "8vw",
+        height: "6vw",
+
+        fontFamily: "Arial",
+
+        marginTop: "10vw",
+        borderRadius: "1vmin",
+    },
+
+    paymentTable: {
+        width: "100%",
+
+        textAlign: "left",
     }
 }
