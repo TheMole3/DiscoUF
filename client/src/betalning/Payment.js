@@ -15,7 +15,7 @@ function Payment(props) {
                     <tr>
                         <th>Produkt</th>
                         <th>Mängd</th>
-                        <th>Kostnad</th>
+                        <th>Á pris</th>
                     </tr>
                     <tr>
                         <td>Inträde</td>

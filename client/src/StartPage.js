@@ -59,11 +59,11 @@ let styles = {
 function StartPage(props) {
   return (
     <div style={styles.content}>
-        <p style={styles.question}>Vad är DISCO FRISKO?</p>
+        <p style={styles.question}>Vad är DISCO MELO?</p>
         <div style={styles.padding}></div>
 
         <div style={styles.info}>
-            DISCO FRISKO är ett disco för låg- och mellanstadieelever som hålls på Curt Nicolin Gymnasiet i Finspång, anordnat av DISCO UF
+            DISCO MELO är ett disco för låg- och mellanstadieelever som hålls på Curt Nicolin Gymnasiet i Finspång, anordnat av DISCO UF
             <br/><br/>
             <span style={{color: "red"}}>OBS!</span> Om du vill minska kötiden kan du förboka! Läs mer under rubriken betalning
         </div>

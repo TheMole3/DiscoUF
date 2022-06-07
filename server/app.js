@@ -1,9 +1,19 @@
 const express = require('express');
-const app = express();
+const app =   express()
+            , cookieParser = require('cookie-parser')
+            , bodyParser = require('body-parser')
+
+
 const config = require('./config.json');
 const port = config.port;
 
+app.use(cookieParser());  // Use cookie parser
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000}));
+app.use(express.json()); // Use express JSON
+
 const auth = require('./auth/auth'); // Import auth code
+app.use(auth.jwt.authenticateToken); // Use middleware for auth token
 
 /*
 Public endpoints
@@ -29,13 +39,13 @@ Delete booking by id
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    if(!req.user) return res.redirect('/ads');
+    res.send(req.user)
 })
 
 app.get('/login', (req, res) => { // Microsoft Azure login endpoint
     auth.auth.getConsentLink((link) => { // Get a microsoft auth consent link
         res.redirect(link); // Redirect user to authenticate at microsoft
-        //res.send("Login öppnas på måndag");
     });
 });
 

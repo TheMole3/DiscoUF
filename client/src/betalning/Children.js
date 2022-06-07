@@ -38,7 +38,7 @@ function Children(props) {
         <div style={{...styles.childMain, ...styles.text}}>
             {children.map((child, i) => {
                 return (
-                    <div style={styles.childInfo}>
+                    <div key={i} style={styles.childInfo}>
                         <button style={styles.remove} onClick={handleChange} name={"close-" + i}>X</button>
                         <div style={styles.childRow}>
                             <input onChange={handleChange} value={child.firstName} name={"firstname-" + i} style={styles.childTextInput} placeholder="Förnamn"/>

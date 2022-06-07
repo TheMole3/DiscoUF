@@ -17,6 +17,7 @@ module.exports = {
                     tenantId: data.tenantId,
                     displayName: data.account.name,
                     email: data.account.username,
+                    authLevel: 0,
                 }
             },
             new: true,   // return new doc if one is upserted
