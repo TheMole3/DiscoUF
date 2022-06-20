@@ -9,11 +9,13 @@ const port = config.port;
 
 app.use(cookieParser());  // Use cookie parser
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:5000}));
 app.use(express.json()); // Use express JSON
 
 const auth = require('./auth/auth'); // Import auth code
 app.use(auth.jwt.authenticateToken); // Use middleware for auth token
+
+let manageServer = require("./manage")(app);
 
 /*
 Public endpoints
@@ -37,11 +39,44 @@ DELETE /deleteBooking
 Delete booking by id
 */
 
+/* 
+    PUBLIC ENDPOINTS 
+*/
 
 app.get('/', (req, res) => {
     if(!req.user) return res.redirect('/ads');
     res.send(req.user)
 })
+
+app.post('/addBooking', async (req, res) => {
+    let booking = {
+        "guardianName": req.body.guardianName,
+        "guardianSurname": req.body.guardianSurname,
+        "phone": req.body.phone,
+        "children": req.body.children
+    }
+    let ID = await manageServer.addBooking(booking)
+
+    res.send({ID})
+})
+
+/*
+    AUTH LEVEL 1 ENDPOINTS
+    Employee
+*/
+app.post('/updateContactInfo', async (req, res) => {
+    res.send(await manageServer.updateContactInfo(req.body))
+})
+
+
+/*
+    AUTH LEVEL 2 ENDPOINTS
+    Admin
+*/
+
+/* 
+    LOGIN ENDPOINTS 
+*/
 
 app.get('/login', (req, res) => { // Microsoft Azure login endpoint
     auth.auth.getConsentLink((link) => { // Get a microsoft auth consent link

@@ -4,7 +4,7 @@
 const config = require('../config.json');
 
 const mongojs = require('mongojs')
-    , db = mongojs(config.dbConnect, ['users']); // Import database TheMole and collections bombman and referrals
+    , db = mongojs(config.dbConnect, ['users']); // Import database
 
 module.exports = {
     findOrCreate: (data, cb) => { // Find or create a user
