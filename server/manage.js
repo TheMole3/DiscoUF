@@ -21,6 +21,28 @@ function manage (app) {
         },
 
         /*
+            Get bookings by a search query
+        */
+        searchBooking: async (query) => {
+            return await new Promise((resolve, reject) => {
+                query = query.split(" ").filter((a) => a).join("|");
+
+                db.bookings.find({
+                    $or: [
+                        { "guardianName" : {$regex : query, $options: "i" } }, 
+                        { "guardianSurname" : {$regex : query, $options: "i" } },
+                        { "children.name" : {$regex : query, $options: "i" } },
+                        { "children.surname" : {$regex : query, $options: "i" } },
+                        { "ID" : parseInt(query.replace(/\D/g, "")) },
+                    ]
+                }, { _id:0 }, (err, docs) => {
+                    if(err) return reject(err);
+                    resolve(docs);
+                });
+            });
+        },
+
+        /*
             Adds a booking to the system and returns the ID
 
             params {
@@ -184,13 +206,13 @@ function manage (app) {
 module.exports = manage;
 
 /*manage().addBooking({
-    "guardianName": "Emma",
-    "guardianSurname": "Arnlund",
+    "guardianName": "Jonas",
+    "guardianSurname": "Harnlund",
     "phone": "072 051 62 23",
     "children": [
         {
-            "name": "Li",
-            "surname": "Arnlund",
+            "name": "Limpan",
+            "surname": "Harnlund",
             "isLagstadie": false,
             "money": 70,
         }

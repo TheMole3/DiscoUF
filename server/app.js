@@ -17,6 +17,10 @@ app.use(auth.jwt.authenticateToken); // Use middleware for auth token
 
 let manageServer = require("./manage")(app);
 
+(async () => {
+    console.log(await manageServer.searchBooking("Emma Arnlund"))
+})()
+
 /*
 Public endpoints
 
@@ -67,6 +71,10 @@ let employeeMiddleware = (req, res, next) => {
     if(!req.user || req.user.authLevel < 1) return res.sendStatus(403);
     next();
 }
+
+app.get('/searchBookings', employeeMiddleware, async (req, res) => {
+    res.send(await manageServer.searchBooking(req.query.query));
+})
 
 app.post('/updateBooking', employeeMiddleware, async (req, res) => {
     res.send(await manageServer.updateBooking(req.body));
