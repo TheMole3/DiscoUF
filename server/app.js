@@ -42,7 +42,6 @@ Delete booking by id
 /* 
     PUBLIC ENDPOINTS 
 */
-
 app.get('/', (req, res) => {
     if(!req.user) return res.redirect('/ads');
     res.send(req.user)
@@ -64,10 +63,26 @@ app.post('/addBooking', async (req, res) => {
     AUTH LEVEL 1 ENDPOINTS
     Employee
 */
-app.post('/updateContactInfo', async (req, res) => {
-    res.send(await manageServer.updateContactInfo(req.body))
+let employeeMiddleware = (req, res, next) => {
+    if(!req.user || req.user.authLevel < 1) return res.sendStatus(403);
+    next();
+}
+
+app.post('/updateBooking', employeeMiddleware, async (req, res) => {
+    res.send(await manageServer.updateBooking(req.body));
 })
 
+app.delete('/deleteBooking', employeeMiddleware, async (req, res) => {
+    res.send(await manageServer.deleteBooking(req.body.ID));
+})
+
+app.post('/updateContactInfo', employeeMiddleware, async (req, res) => {
+    res.send(await manageServer.updateContactInfo(req.body));
+})
+
+app.delete('/deleteContactInfo', employeeMiddleware, async (req, res) => {
+    res.send(await manageServer.deleteBooking(req.body.ID));
+})
 
 /*
     AUTH LEVEL 2 ENDPOINTS
