@@ -11,7 +11,7 @@ function manage (app) {
         createRandomID: async (collection) => {
             return await new Promise((resolve, reject) => {
                 let ID = Math.floor(1000 + Math.random() * 9000); // Generate a 4 digit number
-                db[collection].find({bookingID: ID}, (err, docs) => { // Find entries with the ID
+                db[collection].find({ID: ID}, (err, docs) => { // Find entries with the ID
                     if(err) return reject(err); // Reject error
 
                     if(docs.length != 0) resolve(manager.createRandomID()); // Create a new ID if the generated one is used

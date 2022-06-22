@@ -15,33 +15,14 @@ app.use(express.json()); // Use express JSON
 const auth = require('./auth/auth'); // Import auth code
 app.use(auth.jwt.authenticateToken); // Use middleware for auth token
 
+let corsMiddleware = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next()
+}
+app.use(corsMiddleware);
+
 let manageServer = require("./manage")(app);
-
-(async () => {
-    console.log(await manageServer.searchBooking("Emma Arnlund"))
-})()
-
-/*
-Public endpoints
-
-POST /addBooking
-An endpoint for users to add their booking to the system,
-returns a reference code that should be supplied in the
-
-Private endpoints
-
-GET /getBookingById
-Get a booking by a parameter
-
-GET /getBookings
-Get all bookings
-
-POST /editBooking
-Edit booking parameters by id
-
-DELETE /deleteBooking
-Delete booking by id
-*/
 
 /* 
     PUBLIC ENDPOINTS 
@@ -68,11 +49,12 @@ app.post('/addBooking', async (req, res) => {
     Employee
 */
 let employeeMiddleware = (req, res, next) => {
-    if(!req.user || req.user.authLevel < 1) return res.sendStatus(403);
+    //if(!req.user || req.user.authLevel < 1) return res.sendStatus(403);
     next();
 }
 
 app.get('/searchBookings', employeeMiddleware, async (req, res) => {
+    if(!req.query.query) req.query.query = "";
     res.send(await manageServer.searchBooking(req.query.query));
 })
 
