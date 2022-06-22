@@ -31,7 +31,7 @@ class Entry extends React.Component {
 
         return <li className="table-row">
             <div className="col col-1">
-                <select style={{backgroundColor: booking.status=='paid'?'lightgreen':''}} onChange={e=>{}} value={booking.status}>
+                <select style={{backgroundColor: booking.status==='paid'?'lightgreen':''}} onChange={e=>{}} value={booking.status}>
                     <option value="prel">Prel</option>
                     <option value="paid">Paid</option>
                 </select>
