@@ -28,7 +28,7 @@ let styles = {
 }
 
 function Index() {
-  const [payment, startPayment] = useState(true);
+  const [payment, startPayment] = useState(false);
 
   if(payment) {
     return (
