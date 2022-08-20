@@ -75,17 +75,17 @@ function TabList(props) {
     const [selectedTab, setSelectedTab] = useState(null);
     
     let tabSelect = (i) => {
-        setSelectedTab(i==selectedTab?null:i)
+        setSelectedTab(i===selectedTab?null:i)
     }
 
     const tabs = props.content
     const tabItems = Object.keys(tabs).map((title, i) => (
-        <div key={i} style={{...styles.tab, ...Object.keys(tabs).length-1==i?styles.lasttab:{}}}>
+        <div key={i} style={{...styles.tab, ...Object.keys(tabs).length-1===i?styles.lasttab:{}}}>
             <div onClick={()=>{tabSelect(i)}} style={styles.tabTitle}>
                 {title}
-                <div style={selectedTab==i?styles.contractArrow:styles.expandArrow}></div>
+                <div style={selectedTab===i?styles.contractArrow:styles.expandArrow}></div>
             </div>           
-            {selectedTab==i?
+            {selectedTab===i?
             <div style={styles.tabContent}>
                 {tabs[title]}
             </div>

@@ -11,11 +11,11 @@ function Children(props) {
         let newChildren = children;
 
         switch(field[0]) {
-            case "firstname": 
-                newChildren[field[1]].firstName = event.target.value;
+            case "name": 
+                newChildren[field[1]].name = event.target.value;
             break;
-            case "lastname": 
-                newChildren[field[1]].lastName = event.target.value;
+            case "surname": 
+                newChildren[field[1]].surname = event.target.value;
             break;
             case "radioLag": 
                 newChildren[field[1]].isLagstadie = event.target.value=="on"?true:event.target.value=="off"?false:undefined;
@@ -41,8 +41,8 @@ function Children(props) {
                     <div key={i} style={styles.childInfo}>
                         <button style={styles.remove} onClick={handleChange} name={"close-" + i}>X</button>
                         <div style={styles.childRow}>
-                            <input onChange={handleChange} value={child.firstName} name={"firstname-" + i} style={styles.childTextInput} placeholder="Förnamn"/>
-                            <input onChange={handleChange} value={child.lastName} name={"lastname-" + i} style={styles.childTextInput}  placeholder="Efternamn"/>
+                            <input onChange={handleChange} value={child.name} name={"name-" + i} style={styles.childTextInput} placeholder="Förnamn"/>
+                            <input onChange={handleChange} value={child.surname} name={"surname-" + i} style={styles.childTextInput}  placeholder="Efternamn"/>
                         </div>
                         <div style={styles.childRow}>
                             <div style={styles.radioContainer}>

@@ -33,11 +33,12 @@ app.get('/', (req, res) => {
 })
 
 app.post('/addBooking', async (req, res) => {
+    console.log(req.body)
     let booking = {
-        "guardianName": req.body.guardianName,
-        "guardianSurname": req.body.guardianSurname,
-        "phone": req.body.phone,
-        "children": req.body.children
+        "guardianName": req.body.guardianName || "",
+        "guardianSurname": req.body.guardianSurname || "",
+        "phone": req.body.phone || "",
+        "children": req.body.children || []
     }
     let ID = await manageServer.addBooking(booking)
 

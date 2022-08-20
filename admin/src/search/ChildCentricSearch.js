@@ -33,7 +33,7 @@ class ChildCentricSearch extends SearchComponent {
             idField: 'childID', // Use the 'ID' field as the unique id for bookings
 
             fields: ['ID', 'guardianName', 'guardianSurname', 'name', 'surname'], // Fields to index for full-text search
-            storeFields:  ['name', 'surname', 'guardianName', 'guardianSurname', 'ID', 'childID', 'status', 'phone', 'children'], // Fields to keep and store in filtered results
+            storeFields:  ['name', 'surname', 'guardianName', 'guardianSurname', 'ID', 'childID', 'status', 'phone', 'children', "money"], // Fields to keep and store in filtered results
 
             boost: {name: 2, surname: 2}, // Fields that are boosted in search
 
@@ -50,18 +50,17 @@ class ChildCentricSearch extends SearchComponent {
     Entry = (props) => {
         let booking = props.data;
 
-        let cost = booking.children.reduce((a,b) => a + parseInt(b.money), 0) + booking.children.length*20;
-
         return <li key={props.key} className="table-row">
             <div className="col col-1">
                 <select style={{backgroundColor: booking.status==='paid'?'lightgreen':''}} onChange={e=>{}} value={booking.status}>
                     <option value="prel">Prel</option>
                     <option value="paid">Paid</option>
+                    <option value="used">Used</option>
                 </select>
             </div>
             <div className="col col-2">{booking.ID}</div>
             <div className="col col-3">{`${booking.name} ${booking.surname}`}</div>
-            <div className="col col-4">{cost + " kr"}</div>
+            <div className="col col-4">{booking.money + " kr"}</div>
             <div className="col col-3">{booking.phone}</div>
             <div className="col col-3">{`${booking.guardianName} ${booking.guardianSurname}`}</div>
         </li>

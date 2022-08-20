@@ -23,7 +23,7 @@ let styles = {
     minHeight: "calc(100vh - 14vh)",
     height: "100%",
 
-    backgroundColor: colors.light
+    backgroundColor: colors.light,
   },
 }
 

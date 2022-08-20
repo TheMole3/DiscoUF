@@ -106,6 +106,7 @@ class SearchComponent extends React.Component {
                 <select style={{backgroundColor: booking.status==='paid'?'lightgreen':''}} onChange={e=>{}} value={booking.status}>
                     <option value="prel">Prel</option>
                     <option value="paid">Paid</option>
+                    <option value="used">Used</option>
                 </select>
             </div>
             <div className="col col-2">{booking.ID}</div>

@@ -146,5 +146,9 @@ export default {
         width: "100%",
 
         textAlign: "left",
-    }
+    },
+
+    padding: {
+        height: "3vh"
+    },
 }

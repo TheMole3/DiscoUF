@@ -5,6 +5,7 @@ import styles from "./betalningStyle"
 import Children from "./Children"
 import Parent from "./Parent"
 import Payment from "./Payment"
+import Process from "./Process"
 
 function Betalning(props) {
     const [children, setChildren] = useState([]);
@@ -14,6 +15,7 @@ function Betalning(props) {
         telephone:"",
         email:""
     });
+    const [code, setCode] = useState("")
 
     const [stage, setStage] = useState(0);
 
@@ -34,6 +36,10 @@ function Betalning(props) {
                             <button onClick={()=>{setStage(2)}} style={{...styles.text, ...styles.nextButton}}>Till betalning</button>
                         ]
                     case 2:
+                        return [
+                            <Process parentInfo={parentInfo} childInfo={children} code={{code, setCode}} setStage={setStage}/>,
+                        ]
+                    case 3:
                         return [
                             <Payment parentInfo={parentInfo} childInfo={children} code={48932}/>,
                             <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.nextButton}}>Tillbaka till startsidan</button>
