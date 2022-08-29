@@ -1,6 +1,14 @@
 import colors from './colors.js'
 
 let styles = {
+    noSelect: {
+      WebkitTouchCallout: "none", /* iOS Safari */
+      WebkitUserSelect: "none", /* Safari */
+       KhtmlUserSelect: "none", /* Konqueror HTML */
+         MozUserSelect: "none", /* Old versions of Firefox */
+          MsUserSelect: "none", /* Internet Explorer/Edge */
+              userSelect: "none",
+    },
     navbar: {
         zIndex: "1000",
         position: "fixed",
@@ -48,7 +56,7 @@ let styles = {
 
 function Navbar() {
   return (
-    <div style={styles.navbar} className="navbar">
+    <div style={{...styles.navbar, ...styles.noSelect}} className="navbar">
         <p style={styles.text}>
           DISCO MELO
         </p>

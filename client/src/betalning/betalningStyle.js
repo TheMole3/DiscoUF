@@ -46,6 +46,10 @@ export default {
 
         backgroundColor: "#ff9f9f"
     },
+
+    title: {
+        fontFamily: "Oswald"
+    },
     
     childInfo: {
         display: "flex",

@@ -89,11 +89,11 @@ function StartPage(props) {
             {
                 "Lågstadiedisco": <Lagstadiedisco/>,
                 "Mellanstadiedisco": <Mellanstadiedisco/>,
-                "Kiosken": <Kiosk/>,
-                "Discokort": <Discokort/>,
-                "Vad har vi förbättrat?": <Forbattringar/>,
                 "Föräldrar": <Foraldrar/>,
                 "Betalning": <Betalning viewChange={props.viewChange}/>,
+                "Discokort": <Discokort/>,
+                "Kiosken": <Kiosk/>,
+                "Vad har vi förbättrat?": <Forbattringar/>,
                 "Vilka är vi?": <Omoss/>,
                 "Kontakt": <Kontakt/>
             }

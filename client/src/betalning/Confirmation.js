@@ -11,6 +11,7 @@ function Payment(props) {
     let totalDue =(discoDue || 0) + childInfo.length*30;
 
     return [
+            <h1 style={styles.title}>Ordervy</h1>,
             <div style={styles.childInfo}>
                 <table style={styles.paymentTable}>
                     <tr>
@@ -39,12 +40,6 @@ function Payment(props) {
                         <td>{totalDue} kr</td>
                     </tr>
                 </table> 
-            </div>,
-            <div style={styles.childInfo}>
-                <b>Betala med swish</b>
-                <br/>
-                <p>OBS! Ange koden <b>{code}</b> i medelandet</p>
-                <p>Swisha <i>{totalDue} kr</i>&nbsp; till nummret 123 394 23 39</p>
             </div>,
             <div style={styles.childInfo}>
                 <p>Barnet hämtar ut sitt discokort i entrén genom att uppge sitt namn.</p>

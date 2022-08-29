@@ -30,7 +30,7 @@ class Payment extends React.Component {
         }).then((response) => response.json())
         .then((data) => {
             setCode(data.ID)
-            props.setStage(3)
+            props.setStage(4)
         })
         .catch((error) => {
             this.setState({...this.state, error: <div style={{...styles.childInfo}}>
@@ -40,7 +40,9 @@ class Payment extends React.Component {
                 <b>ERROR:</b>
                 {error.message}
                 <div style={styles.padding}></div>
-                Försök igen eller kontakta hugo@melo.se
+                Försök igen eller kontakta <a href="mailto:hugo@melo.se">hugo@melo.se</a>
+
+                <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.nextButton}}>Tillbaka till startsidan</button>
                 <div style={styles.padding}></div>
             </div>})
         });
