@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 
 import styles from "./betalningStyle"
+import privacyPolicy from "../privacy";
 
 function Payment(props) {
-    let parentInfo = props.parentInfo;
     let childInfo = props.childInfo;
-    let code = props.code;
 
     let discoDue = childInfo.reduce((a,b) => a + parseInt(b.money), 0);
     let totalDue =(discoDue || 0) + childInfo.length*30;
@@ -48,7 +47,16 @@ function Payment(props) {
                 <br/>
                 Lågstadie: 17:00 - 17:20<br/>
                 Mellanstadie: 19:45 - 20:05
-            </div>      
+            </div>,  
+            <div>
+                <input checked={props.privacyAccepted.privacyAccepted} onClick={(event) => {props.privacyAccepted.setPrivacyAccepted(event.target.checked)}} type="checkbox"/>Jag har läst och accepterar <a onClick={(e) => {
+                    e.preventDefault();
+                    document.open();
+                    window.history.pushState({place: "privacy"}, '', "/")
+                    document.write(privacyPolicy);
+                    document.close();
+                }} href="/">integritetspolicyn</a>
+            </div>  
     ];
 }
 

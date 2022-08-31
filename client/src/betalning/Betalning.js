@@ -16,31 +16,56 @@ function Betalning(props) {
         telephone:"",
         email:""
     });
-    const [code, setCode] = useState("")
-
+    const [code, setCode] = useState("");
+    
     const [stage, setStage] = useState(0);
+
+    const [privacyAccepted, setPrivacyAccepted] = useState(false);
+
+    const [error, setError] = useState("");
+
+    let checkData = (stage, newStage) => {
+
+        if(stage === 0) {
+            if(!children || !children.length) return setError("Du måste fylla i vilka som ska komma på discot")
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
+                if(!(child.name && child.surname && child.isLagstadie !== undefined && child.money)) return setError("Du måste fylla i alla uppgifter")
+            }
+        }
+
+        if(stage === 1) {
+            if(!(parentInfo.lastName && parentInfo.firstName && parentInfo.telephone)) return setError("Du måste fylla i alla uppgifter")
+        }
+
+        if(stage === 2) {
+            if(!privacyAccepted) return setError("Du måste acceptera integritetspolicyn för att gå vidare")
+        }
+        
+        setStage(newStage);
+    }
 
     return (
         <div style={styles.main}>
             {(() => {
                 switch (stage) {
-                    case 0:
+                    default:
                         return [
                             <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.backButton}}>←</button>,
                             <Children child={{children, setChildren}}/>,
-                            <button onClick={()=>{setStage(1)}} style={{...styles.text, ...styles.nextButton}}>Nästa steg</button>
+                            <button onClick={()=>{checkData(0, 1)}} style={{...styles.text, ...styles.nextButton}}>Nästa steg</button>
                         ]
                     case 1:
                         return [
                             <button onClick={()=>{setStage(0)}} style={{...styles.text, ...styles.backButton}}>←</button>,
                             <Parent parentInfo={{parentInfo, setParentInfo}}/>,
-                            <button onClick={()=>{setStage(2)}} style={{...styles.text, ...styles.nextButton}}>Nästa steg</button>
+                            <button onClick={()=>{checkData(1, 2)}} style={{...styles.text, ...styles.nextButton}}>Nästa steg</button>
                         ]
                     case 2:
                         return [
                             <button onClick={()=>{setStage(0)}} style={{...styles.text, ...styles.backButton}}>←</button>,
-                            <Confirmation parentInfo={parentInfo} childInfo={children}></Confirmation>,
-                            <button onClick={()=>{setStage(3)}} style={{...styles.text, ...styles.nextButton}}>Till betalning</button>
+                            <Confirmation parentInfo={parentInfo} childInfo={children} privacyAccepted={{privacyAccepted, setPrivacyAccepted}}></Confirmation>,
+                            <button onClick={()=>{checkData(2, 3)}} style={{...styles.text, ...styles.nextButton}}>Till betalning</button>
                         ]
                     case 3:
                         return [
@@ -52,7 +77,17 @@ function Betalning(props) {
                             <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.nextButton}}>Tillbaka till startsidan</button>
                         ]
                 }
-            })()}   
+            })()}
+            {(() => {
+                return error?(
+                    <div style={styles.dim}>
+                    <div style={styles.errorBox}>
+                        <span style={styles.text}>{error}</span>
+                        <button style={{...styles.text, ...styles.errorButton}} onClick={()=>{setError("")}}>Ok</button>
+                    </div>
+                    </div>
+                ):(null)
+            })()}
         </div>
     );
 }

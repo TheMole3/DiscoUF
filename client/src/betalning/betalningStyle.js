@@ -1,6 +1,6 @@
 import colors from "../colors"
 
-export default {
+let styles = {
     main: {
         display: "flex",
         flexDirection: "column",
@@ -155,4 +155,37 @@ export default {
     padding: {
         height: "3vh"
     },
+
+    dim: {
+        position: "fixed",
+        top: "-50vh",
+        width: "100vw",
+        height: "200vh",
+        backgroundColor: "rgba(200, 200, 200, 0.2)",
+        backdropFilter: "blur(3px)",
+    },
+
+    errorBox: {
+        position: "fixed",
+        top: "80vh",
+        left: "10vw",
+        width: "70vw",
+        minHeight: "10vh",
+        padding: "5vw",
+        paddingBottom: "5vh",
+        backgroundColor: "rgb(233, 161, 226)",
+        borderRadius: "2vmin",
+        textAlign: "center",
+        filter: "drop-shadow(0px 0px 6px gray)",
+    },
+
+    errorButton: {
+        position: "absolute",
+        height: "5vh",
+        width: "40%",
+        bottom: "16%",
+        left: "30%",
+    }
 }
+
+export default styles
