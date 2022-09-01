@@ -91,7 +91,7 @@ function Betalning(props) {
         </div>
     ): (
         <div style={styles.main}>
-            <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.backButton}}>←</button>,
+            <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.backButton}}>←</button>
             <div style={styles.childInfo}>
                 <div style={styles.padding} />
                 Förbetalningen öppnar den 12e september

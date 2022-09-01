@@ -8,8 +8,6 @@ let styles = {
 
         borderRadius: "10px",
 
-        border: "1px solid #e1e1e1",
-
         marginBottom: "5vh",
 
         filter: "drop-shadow(0px 0px 6px gray)",

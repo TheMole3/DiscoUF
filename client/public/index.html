@@ -18,6 +18,9 @@
     <meta name="viewport" id="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
     <script>
+      // Redirect if on desktop
+      if(document.body.clientWidth > document.body.clientHeight * 0.5) document.location.replace("https://disco.melo.se")
+
     // Global boolean variable that holds the current orientation
     var pageInPortraitMode;
 

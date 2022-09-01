@@ -63,7 +63,7 @@
     <iframe id="iframe" src="/index.html" frameborder="0"></iframe>
 
     <script>
-        if(document.body.clientWidth <= document.body.clientHeight * 0.5) document.location.replace("https://m.disco.melo.se")
+        if(document.body.clientWidth < document.body.clientHeight * 0.5) document.location.replace("https://mdisco.melo.se")
 
         document.addEventListener("wheel", (e) => {
             let iframe = document.getElementById("iframe")
