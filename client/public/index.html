@@ -67,7 +67,9 @@
 
     <script>
       // Redirect if on desktop
-      if(document.body.clientWidth >= document.body.clientHeight * 0.5) document.location.replace("https://disco.melo.se")
+      document.addEventListener("DOMContentLoaded", () => {
+            if(document.body.clientWidth >= document.body.clientHeight * 0.5) document.location.replace("https://disco.melo.se");
+      })
     </script>
   </body>
 </html>
