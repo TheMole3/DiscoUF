@@ -33,7 +33,7 @@ class Payment extends React.Component {
             props.setStage(4)
         })
         .catch((error) => {
-            this.setState({...this.state, error: <div style={{...styles.childInfo}}>
+            this.setState({...this.state, error: <div style={styles.childInfo}>
                 <div style={styles.padding}></div>
                 NÅGOT GICK SNETT!
                 <div style={styles.padding}></div>

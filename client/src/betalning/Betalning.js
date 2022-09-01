@@ -45,7 +45,7 @@ function Betalning(props) {
         setStage(newStage);
     }
 
-    return (
+    return false?(
         <div style={styles.main}>
             {(() => {
                 switch (stage) {
@@ -88,6 +88,15 @@ function Betalning(props) {
                     </div>
                 ):(null)
             })()}
+        </div>
+    ): (
+        <div style={styles.main}>
+            <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.backButton}}>←</button>,
+            <div style={styles.childInfo}>
+                <div style={styles.padding} />
+                Förbetalningen öppnar den 12e september
+                <div style={styles.padding} />
+            </div>
         </div>
     );
 }

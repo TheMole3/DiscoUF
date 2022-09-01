@@ -131,7 +131,7 @@ let styles = {
         top: "2vh",
         left: "3vw",
 
-        position: "absolute",
+        position: "fixed",
 
         opacity: "80%",
 

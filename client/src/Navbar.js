@@ -19,8 +19,9 @@ let styles = {
         justifyContent: "space-around",
         alignItems: "center",
 
-        width: "100vw",
-        height: "12vmin",
+        width: "120vw",
+        height: "12vw",
+        left: "-10vw",
 
         backgroundColor: colors.primary,
 
