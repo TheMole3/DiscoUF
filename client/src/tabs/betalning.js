@@ -14,7 +14,7 @@ function betalning(props) {
         }} style={styles.button}>Förbetalning</button></div>
 
         <br/>Det går också att betala när du väl är på plats. 
-        <br/>Vi tar, helst, swish men även kontanter.
+        <br/>Vi tar helst swish, men även kontanter.
     
     </div>
   );

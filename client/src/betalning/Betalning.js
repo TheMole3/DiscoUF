@@ -45,7 +45,7 @@ function Betalning(props) {
         setStage(newStage);
     }
 
-    return false?(
+    return false ? (
         <div style={styles.main}>
             {(() => {
                 switch (stage) {
@@ -94,7 +94,8 @@ function Betalning(props) {
             <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.backButton}}>←</button>
             <div style={styles.childInfo}>
                 <div style={styles.padding} />
-                Förbetalningen öppnar den 12e september
+                Swedbank har förlängda handlägningstider.<br/>
+                Vi jobbar på att öppna förbetalningen så fort vi kan, kika gärna förbi om några dagar 😊
                 <div style={styles.padding} />
             </div>
         </div>

@@ -70,7 +70,7 @@ function StartPage(props) {
         <div style={styles.padding}></div>
 
         <div style={styles.info}>
-            DISCO MELO är ett disco för låg- och mellanstadieelever som hålls på Curt Nicolin Gymnasiet i Finspång, anordnat av DISCO MELO UF
+            DISCO MELO är ett disco för låg- och mellanstadieelever på Curt Nicolin Gymnasiet i Finspång, anordnat av DISCO MELO UF
         </div>
 
         <div style={styles.padding}></div>
