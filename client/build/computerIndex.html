@@ -64,8 +64,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            if(document.body.clientWidth < document.body.clientHeight * 0.5) document.location.replace("https://mdisco.melo.se");
+            if(window.innerWidth < (window.innerHeight * 0.5)) { document.location.replace("http://localhost:3000/") };
         })
+
         document.addEventListener("wheel", (e) => {
             let iframe = document.getElementById("iframe")
 

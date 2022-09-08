@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.4b346f47.css",
-    "main.js": "/static/js/main.71c5ca04.js",
+    "main.js": "/static/js/main.dc13b22e.js",
     "static/media/discoFont.ttf": "/static/media/discoFont.3e5a314c2a3b96024c5c.ttf",
     "index.html": "/index.html",
     "main.4b346f47.css.map": "/static/css/main.4b346f47.css.map",
-    "main.71c5ca04.js.map": "/static/js/main.71c5ca04.js.map"
+    "main.dc13b22e.js.map": "/static/js/main.dc13b22e.js.map"
   },
   "entrypoints": [
     "static/css/main.4b346f47.css",
-    "static/js/main.71c5ca04.js"
+    "static/js/main.dc13b22e.js"
   ]
 }

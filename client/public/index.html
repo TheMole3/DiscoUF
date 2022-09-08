@@ -67,8 +67,8 @@
 
     <script>
       // Redirect if on desktop
-      document.addEventListener("DOMContentLoaded", () => {
-            if(document.body.clientWidth >= document.body.clientHeight * 0.5) document.location.replace("https://disco.melo.se");
+      window.addEventListener("DOMContentLoaded", () => {
+          if(!(window.innerWidth < (window.innerHeight * 0.5)) && (window.location === window.parent.location)) { document.location.replace("http://localhost:3000/computerIndex") };
       })
     </script>
   </body>
