@@ -60,6 +60,15 @@ let styles = {
         color: "blue",
         textDecoration: "underline",
         cursor: "pointer"
+    },
+
+    coopText: {
+        fontSize: "4.5vmin"
+    },
+    coop: {
+        alignItems: "center",
+        width: "60vw",
+        filter: "drop-shadow(rgb(38, 38, 45) 3px 2px 5px)"
     }
 }
 
@@ -98,6 +107,17 @@ function StartPage(props) {
                 "Kontakt": <Kontakt/>
             }
         }/>
+        <div style={styles.padding}></div>
+
+
+        <p style={{...styles.question, ...styles.coopText}}>Kiosken sponsras av</p>
+        <div style={styles.padding}></div>
+        <img style={styles.coop} alt="Stora Coop" src="./StoraCoop.png"/>
+
+        <div style={styles.padding}></div>
+        <div style={styles.padding}></div>
+        <div style={styles.padding}></div>
+
     </div>
   );
 }
