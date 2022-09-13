@@ -110,7 +110,7 @@ function StartPage(props) {
         <div style={styles.padding}></div>
 
 
-        <p style={{...styles.question, ...styles.coopText}}>Kiosken sponsras av</p>
+        <p style={{...styles.question, ...styles.coopText}}>Kiosken stödjs av</p>
         <div style={styles.padding}></div>
         <img style={styles.coop} alt="Stora Coop" src="./StoraCoop.png"/>
 
