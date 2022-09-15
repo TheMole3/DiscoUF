@@ -85,7 +85,7 @@ function StartPage(props) {
         <div style={styles.padding}></div>
 
         <div style={styles.info}>
-            <span style={{color: "red"}}>OBS!</span> Om du vill minska kötiden kan du förboka! Läs mer under rubriken betalning
+            <span style={{color: "red"}}>OBS!</span> Nu är förbetalningen öppen! Läs mer under rubriken betalning
             <br/>
             <span onClick={()=> {
                 props.viewChange(true);
