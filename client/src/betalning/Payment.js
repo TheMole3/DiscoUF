@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 import styles from "./betalningStyle"
 
@@ -44,7 +44,7 @@ function Payment(props) {
                 <b>Betala med swish</b>
                 <br/>
                 <p>OBS! Ange koden <b>{code}</b> i medelandet</p>
-                <p>Swisha <i>{totalDue} kr</i>&nbsp; till nummret 123 394 23 39</p>
+                <p>Swisha <i>{totalDue} kr</i>&nbsp; till nummret 123 672 98 75</p>
             </div>,
             <div style={styles.childInfo}>
                 <p>Barnet hämtar ut sitt discokort i entrén genom att uppge sitt namn.</p>

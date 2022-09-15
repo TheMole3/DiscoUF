@@ -35,7 +35,7 @@ function Betalning(props) {
         }
 
         if(stage === 1) {
-            if(!(parentInfo.lastName && parentInfo.firstName && parentInfo.telephone)) return setError("Du måste fylla i alla uppgifter")
+            if(!(parentInfo.lastName && parentInfo.firstName && parentInfo.phone)) return setError("Du måste fylla i alla uppgifter")
         }
 
         if(stage === 2) {
@@ -45,7 +45,7 @@ function Betalning(props) {
         setStage(newStage);
     }
 
-    return false ? (
+    return true ? (
         <div style={styles.main}>
             {(() => {
                 switch (stage) {

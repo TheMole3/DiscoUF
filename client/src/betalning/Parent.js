@@ -17,8 +17,8 @@ function Parent(props) {
             case "lastname": 
                 newParentInfo.lastName = event.target.value;
             break;
-            case "telephone": 
-                newParentInfo.telephone = event.target.value.replace(/[^(0-9| )]/g,'');
+            case "phone": 
+                newParentInfo.phone = event.target.value.replace(/[^(0-9| )]/g,'');
             break;
             case "email": 
                 newParentInfo.email = event.target.value;
@@ -37,7 +37,7 @@ function Parent(props) {
                 </div>
                 <div  style={{...styles.radioContainer, ...styles.childRow}}>
                     <label>Telefonnummer</label>
-                    <input onChange={handleChange} value={parentInfo.telephone} name={"telephone"} style={styles.longTextInput}  placeholder="123 456 78 90"/>
+                    <input onChange={handleChange} value={parentInfo.phone} name={"phone"} style={styles.longTextInput}  placeholder="123 456 78 90"/>
                 </div>
             </div>
     );

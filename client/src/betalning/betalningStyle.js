@@ -41,6 +41,7 @@ let styles = {
 
         height: "5vw",
         width: "5vw",
+        fontSize: "2.5vmin",
 
         cursor: "pointer",
 
@@ -185,6 +186,10 @@ let styles = {
         width: "40%",
         bottom: "16%",
         left: "30%",
+    },
+
+    integrity: {
+        fontSize: "3.7vmin",
     }
 }
 

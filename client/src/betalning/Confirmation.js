@@ -47,8 +47,9 @@ function Payment(props) {
                 <br/>
                 Lågstadie: 17:00 - 17:20<br/>
                 Mellanstadie: 19:45 - 20:05
+                <div style={styles.padding}/>
             </div>,  
-            <div>
+            <div style={styles.integrity}>
                 <input checked={props.privacyAccepted.privacyAccepted} onClick={(event) => {props.privacyAccepted.setPrivacyAccepted(event.target.checked)}} type="checkbox"/>Jag har läst och accepterar <a onClick={(e) => {
                     e.preventDefault();
                     document.open();

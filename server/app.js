@@ -28,7 +28,7 @@ let manageServer = require("./manage")(app);
     PUBLIC ENDPOINTS 
 */
 app.get('/', (req, res) => {
-    if(!req.user) return res.redirect('/ads');
+    if(!req.user) return res.send("Not logged in");
     res.send(req.user)
 })
 
@@ -50,7 +50,7 @@ app.post('/addBooking', async (req, res) => {
     Employee
 */
 let employeeMiddleware = (req, res, next) => {
-    //if(!req.user || req.user.authLevel < 1) return res.sendStatus(403);
+    if(!req.user || req.user.authLevel < 1) return res.sendStatus(403);
     next();
 }
 
