@@ -19,7 +19,7 @@ class Payment extends React.Component {
             "children": childInfo
         }
 
-        fetch('http://localhost:3010/addBooking', {  // Enter your IP address here
+        fetch('https://apidisco.melo.se/addBooking', {  // Enter your IP address here
 
             method: 'POST', 
             headers: {
