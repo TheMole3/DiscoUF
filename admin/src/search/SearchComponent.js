@@ -37,7 +37,11 @@ class SearchComponent extends React.Component {
      */
     async dbUpdate() {
         // Get bookings by query
-        fetch( config.apiUrl + "/searchBookings" )
+        fetch( config.apiUrl + "/searchBookings", {
+            headers: {
+              Cookie: 'auth'
+            }
+        })
             .then( response => response.json() )
             .then( async data => {
                 let modifiedDB = await this.dbMiddleware(data);

@@ -73,7 +73,7 @@ function Betalning(props) {
                         ]
                     case 4:
                         return [
-                            <Payment parentInfo={parentInfo} childInfo={children} code={48932}/>,
+                            <Payment parentInfo={parentInfo} childInfo={children} code={code}/>,
                             <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.nextButton}}>Tillbaka till startsidan</button>
                         ]
                 }

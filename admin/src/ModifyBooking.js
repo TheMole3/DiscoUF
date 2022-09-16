@@ -31,9 +31,7 @@ class ModifyBooking extends React.Component {
                                     <input className='moneyInput' type="number" value={child.money}/> Kr
                                     <br/>
                                     Lågstadie: <input type="radio" checked={child.isLagstadie}/>
-                                    <br/>
-                                    Mellanstadie: <input type="radio" checked={!child.isLagstadie}/>
-
+                                    <br/>Mellanstadie: <input type="radio" checked={!child.isLagstadie}/>
                                     <br/><br/><br/>
                                 </li>
                             )
