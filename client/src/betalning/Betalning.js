@@ -45,7 +45,8 @@ function Betalning(props) {
         setStage(newStage);
     }
 
-    return true ? (
+
+    return !(new Date() >= new Date("2022-09-30 12:00")) ? (
         <div style={styles.main}>
             {(() => {
                 switch (stage) {
@@ -94,8 +95,8 @@ function Betalning(props) {
             <button onClick={()=>{props.viewChange(false)}} style={{...styles.text, ...styles.backButton}}>←</button>
             <div style={styles.childInfo}>
                 <div style={styles.padding} />
-                Swedbank har förlängda handlägningstider.<br/>
-                Vi jobbar på att öppna förbetalningen så fort vi kan, kika gärna förbi om några dagar 😊
+                Förbetalningen har stängt<br/>
+                Du kan fortfarande betala med swish eller kontant i entrén på discot 😊
                 <div style={styles.padding} />
             </div>
         </div>
