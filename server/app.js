@@ -1,7 +1,10 @@
 const express = require('express');
+const { createServer } = require("http");
 const app =   express()
+            , httpServer = createServer(app)
             , cookieParser = require('cookie-parser')
             , bodyParser = require('body-parser')
+
 
 
 const config = require('./config.json');
@@ -33,13 +36,19 @@ app.get('/', (req, res) => {
 })
 
 app.post('/addBooking', async (req, res) => {
-    console.log(req.body)
     let booking = {
         "guardianName": req.body.guardianName || "",
         "guardianSurname": req.body.guardianSurname || "",
         "phone": req.body.phone || "",
-        "children": req.body.children || []
+        "children": req.body.children || [],
+        "paid": false
     }
+
+    // Add entered false tag
+    for(let [index, val] of booking.children.entries()) {
+        booking.children[index].entered = false;
+    }
+
     let ID = await manageServer.addBooking(booking)
 
     res.send({ID})
@@ -54,31 +63,10 @@ let employeeMiddleware = (req, res, next) => {
     next();
 }
 
-app.get('/searchBookings', employeeMiddleware, async (req, res) => {
+app.get('/getBookings', employeeMiddleware, async (req, res) => {
     if(!req.query.query) req.query.query = "";
-    res.send(await manageServer.searchBooking(req.query.query));
+    res.send(await manageServer.getBookings(req.query.query));
 })
-
-app.post('/updateBooking', employeeMiddleware, async (req, res) => {
-    res.send(await manageServer.updateBooking(req.body));
-})
-
-app.delete('/deleteBooking', employeeMiddleware, async (req, res) => {
-    res.send(await manageServer.deleteBooking(req.body.ID));
-})
-
-app.post('/updateContactInfo', employeeMiddleware, async (req, res) => {
-    res.send(await manageServer.updateContactInfo(req.body));
-})
-
-app.delete('/deleteContactInfo', employeeMiddleware, async (req, res) => {
-    res.send(await manageServer.deleteBooking(req.body.ID));
-})
-
-/*
-    AUTH LEVEL 2 ENDPOINTS
-    Admin
-*/
 
 /* 
     LOGIN ENDPOINTS 
@@ -104,6 +92,10 @@ app.get('/redirect', (req, res) => { // Microsoft Azure Auth redirect endpoint
     });
 });
 
-app.listen(port, () => {
+let adminServer = require("./adminServer")(httpServer, manageServer);
+
+
+httpServer.listen(port, () => {
   console.log(`DISCO UF Server listening on port ${port}`)
 })
+

@@ -22,11 +22,31 @@ var jwt = {
             });
         });
     },
+    socketIoMiddleware(socket, next) {
+        const token = socket.handshake.auth.token;
+        const NoTokenErr = new Error("Not Authorized");
+        NoTokenErr.data = 401;
+        if(!token) return next(NoTokenErr);
+
+        jsonwebtoken.verify(token, config.authSecret, (err, id) => { // Verify tokens validity and decrypt
+            user.findById(id, (error, user) => { // Find logged in user
+                if(error) {
+                    const ForbiddenError = new Error("Forbidden");
+                    ForbiddenError.data = 403;
+
+                    return next(new Error(ForbiddenError));
+                };
+                
+                socket.user = user; // Save user for later use
+                next(); // pass the execution off to whatever request the client intended
+            });
+        });
+    },
     generateAccessToken(id) { // Encrypt user id
         return jsonwebtoken.sign(id, config.authSecret);
     },
     setSessionCookie: async (context, id) => { // Save Token as a cookie in the users web browser
-        await context.res.cookie('authToken', jwt.generateAccessToken(id), {maxAge: 1000*60*60*24, httpOnly: true, domain: config.domain, path: '/'});
+        await context.res.cookie('discoAuthToken', jwt.generateAccessToken(id), {maxAge: 1000*60*60*24, httpOnly: true, domain: config.domain, path: '/'});
     }
 };
 
